@@ -796,8 +796,7 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
 
     <div id="voucher-modal" class="fixed inset-0 bg-spaceNavy/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-softCream border-4 border-borderNavy rounded-3xl p-6 max-w-sm w-full text-center shadow-[0_12px_0_#1e293b] transform transition">
-            <div id="voucher-emoji" class="text-6xl mb-3">🎁</div>
-            <h3 id="voucher-title" class="text-2xl font-black text-borderNavy mb-2 uppercase">KUPON ULANG TAHUN!</h3>
+            <h3 id="voucher-title" class="text-2xl font-black text-borderNavy mb-2 uppercase">KUPON</h3>
             <p id="voucher-desc" class="text-slate-700 font-bold text-sm mb-6">Kamu memenangkan kupon spesial dari Alien!</p>
             <button onclick="closeVoucherModal()" class="btn-aesthetic bg-alienLime text-spaceNavy font-black px-6 py-3 rounded-2xl text-sm w-full uppercase">
                 Ooooooh! Terima Kasih! 
@@ -831,8 +830,8 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
         ];
 
         const coupons = [
-            { title: "KUPON BELI MAKANAN", desc: "Kupon dibelikan makanan/snack favoritmu hari ini!", emoji: "🍔" },
-            { title: "KUPON MAIN", desc: "Bebas main seharian tanpa diganggu!", emoji: "🎮" }
+            { title: "KUPON BELI MAKANAN", desc: "Kupon dibelikan makanan/snack favoritmu hari ini!" },
+            { title: "KUPON MAIN", desc: "Bebas main seharian tanpa diganggu!" }
         ];
 
         function initSynth() {
@@ -950,7 +949,6 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
 
         function triggerSurpriseCoupon(index) {
             const coupon = coupons[(index - 1) % coupons.length];
-            document.getElementById('voucher-emoji').innerText = coupon.emoji;
             document.getElementById('voucher-title').innerText = coupon.title;
             document.getElementById('voucher-desc').innerText = coupon.desc;
             document.getElementById('voucher-modal').classList.remove('hidden');
