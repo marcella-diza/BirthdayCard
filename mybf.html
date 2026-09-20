@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Birthday Special 🚀 Little Green Men Birthday Card</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome & Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        handwriting: ['Gaegu', 'cursive'],
+                        body: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        alienLime: '#a3e635',
+                        alienDarkGreen: '#4d7c0f',
+                        alienPurple: '#a855f7',
+                        pizzaBlue: '#38bdf8',
+                        spaceNavy: '#0f172a',
+                        softCream: '#fefce8',
+                        softBlueBg: '#dbeafe',
+                        borderNavy: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(253, 224, 71, 0.5), transparent 24%),
+                radial-gradient(circle at right center, rgba(168, 85, 247, 0.2), transparent 26%),
+                radial-gradient(circle at bottom left, rgba(74, 222, 128, 0.18), transparent 30%),
+                linear-gradient(135deg, #dbeafe 0%, #eef4ff 35%, #fdf2ff 100%);
+            color: #0f172a;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(255,255,255,0.85) 1.5px, transparent 1.6px), radial-gradient(rgba(56,189,248,0.18) 1.2px, transparent 1.4px);
+            background-size: 22px 22px;
+            background-position: 0 0, 11px 11px;
+            opacity: 0.7;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.18));
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Aesthetic Patterns */
+        .pattern-checker {
+            background-color: #e0f2fe;
+            background-image: linear-gradient(45deg, #bae6fd 25%, transparent 25%), 
+                              linear-gradient(-45deg, #bae6fd 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #bae6fd 75%), 
+                              linear-gradient(-45deg, transparent 75%, #bae6fd 75%);
+            background-size: 24px 24px;
+            background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+        }
+
+        .pattern-dots {
+            background-image: radial-gradient(#93c5fd 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+        }
+
+        .pattern-stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                #f0f9ff,
+                #f0f9ff 12px,
+                #e0f2fe 12px,
+                #e0f2fe 24px
+            );
+        }
+
+        .pattern-diamonds {
+            background-color: #fef08a;
+            background-image: linear-gradient(135deg, #fde047 25%, transparent 25%), 
+                              linear-gradient(225deg, #fde047 25%, transparent 25%), 
+                              linear-gradient(45deg, #fde047 25%, transparent 25%), 
+                              linear-gradient(315deg, #fde047 25%, transparent 25%);
+            background-position: 16px 0, 16px 0, 0 0, 0 0;
+            background-size: 32px 32px;
+            background-repeat: repeat;
+        }
+
+        /* Soft Card Border & Shadow */
+        .card-aesthetic {
+            background-color: #ffffff;
+            border: 3.5px solid #1e293b;
+            border-radius: 1.5rem;
+            box-shadow: 0px 8px 0px #1e293b;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-aesthetic {
+            border: 3px solid #1e293b;
+            box-shadow: 0px 4px 0px #1e293b;
+            transition: all 0.15s ease;
+        }
+        .btn-aesthetic:active {
+            transform: translateY(3px);
+            box-shadow: 0px 1px 0px #1e293b;
+        }
+
+        .cake-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .cake-stack {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: min(100%, 24rem);
+            margin: 0 auto;
+        }
+
+        .cake-tier {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            border: 4px solid #1e293b;
+            border-radius: 1.4rem 1.4rem 1rem 1rem;
+            box-shadow: 0 8px 0 #1e293b;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .cake-tier::before {
+            content: "";
+            position: absolute;
+            left: 0.8rem;
+            right: 0.8rem;
+            top: 0.7rem;
+            height: 0.8rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.45);
+        }
+
+        .cake-tier::after {
+            content: "";
+            position: absolute;
+            left: 0.8rem;
+            right: 0.8rem;
+            bottom: 0.7rem;
+            height: 0.5rem;
+            border-radius: 999px;
+            background: rgba(30,41,59,0.08);
+        }
+
+        .cake-tier--top {
+            width: 8.5rem;
+            height: 3.6rem;
+            background: linear-gradient(180deg, #7dd3fc 0%, #38bdf8 100%);
+            z-index: 3;
+        }
+
+        .cake-tier--middle {
+            width: 13.5rem;
+            height: 4.7rem;
+            background: linear-gradient(180deg, #fde68a 0%, #fbbf24 100%);
+            margin-top: -0.35rem;
+            z-index: 2;
+        }
+
+        .cake-tier--bottom {
+            width: 17rem;
+            height: 5.6rem;
+            background: linear-gradient(180deg, #bef264 0%, #a3e635 100%);
+            margin-top: -0.35rem;
+            z-index: 1;
+        }
+
+        .cake-plate {
+            width: 19rem;
+            height: 1.2rem;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #f8fafc 0%, #dbeafe 100%);
+            border: 4px solid #1e293b;
+            box-shadow: 0 5px 0 #1e293b;
+            margin-top: 0.8rem;
+        }
+
+        .cake-candle {
+            position: relative;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -0.4rem;
+        }
+
+        .cake-candle .candle-stick {
+            width: 1.2rem;
+            height: 3.5rem;
+            border-radius: 0.6rem 0.6rem 0.5rem 0.5rem;
+            background: linear-gradient(180deg, #fef3c7 0%, #d9f99d 100%);
+            border: 3px solid #1e293b;
+            box-shadow: inset 0 -4px 0 rgba(30,41,59,0.15);
+        }
+
+        .cake-candle .flame-wrap {
+            position: relative;
+            width: 2.5rem;
+            height: 2.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: -0.4rem;
+        }
+
+        .cake-candle #main-flame {
+            width: 1.5rem;
+            height: 2.1rem;
+            background: linear-gradient(180deg, #fef08a 0%, #f59e0b 40%, #ea580c 100%);
+            border-radius: 70% 70% 60% 60% / 85% 85% 40% 40%;
+            box-shadow: 0 0 18px rgba(249, 115, 22, 0.9);
+            transform-origin: center bottom;
+        }
+
+        .cake-symbol {
+            font-size: 1.9rem;
+            line-height: 1;
+            filter: drop-shadow(0 2px 0 rgba(30,41,59,0.15));
+        }
+
+        /* Flame animation */
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+            50% { transform: scale(1.25) rotate(2deg); opacity: 0.85; }
+        }
+        .flame-anim {
+            animation: flicker 0.4s infinite ease-in-out;
+        }
+
+        @keyframes floatGentle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: floatGentle 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px) rotate(-3deg); }
+            40%, 80% { transform: translateX(8px) rotate(3deg); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #dbeafe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 10px;
+            border: 2px solid #1e293b;
+        }
+
+        @media (max-width: 640px) {
+            .card-aesthetic {
+                border-width: 3px;
+                box-shadow: 0px 6px 0px #1e293b;
+            }
+
+            .btn-aesthetic {
+                box-shadow: 0px 3px 0px #1e293b;
+            }
+
+            #cal-month-input {
+                font-size: clamp(1.1rem, 5vw, 1.6rem);
+            }
+
+            #cal-day1-input {
+                width: min(8.25rem, 58vw);
+                font-size: clamp(2.8rem, 12vw, 4rem);
+            }
+
+            #letter-body-input {
+                font-size: clamp(1.15rem, 4.5vw, 2rem);
+                line-height: 1.7;
+                padding: 0.9rem;
+            }
+
+            #screen-4 .mt-6 {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.8rem;
+            }
+
+            #screen-4 .mt-6 > div,
+            #screen-4 .mt-6 > button {
+                width: 100%;
+            }
+
+            #screen-4 .mt-6 > button {
+                justify-content: center;
+            }
+
+            #screen-6 .font-handwriting {
+                font-size: clamp(1.1rem, 4.6vw, 1.8rem);
+            }
+
+            #screen-6 .h-48 {
+                height: 11rem;
+            }
+
+            .cake-stack {
+                width: min(100%, 18rem);
+            }
+
+            .cake-tier--top {
+                width: 6.5rem;
+                height: 3rem;
+            }
+
+            .cake-tier--middle {
+                width: 10.5rem;
+                height: 4rem;
+            }
+
+            .cake-tier--bottom {
+                width: 13.5rem;
+                height: 4.8rem;
+            }
+
+            .cake-plate {
+                width: 15.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-softBlueBg min-h-screen text-spaceNavy antialiased flex flex-col justify-between selection:bg-alienLime selection:text-spaceNavy">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-borderNavy px-4 py-3 shadow-sm hidden">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 bg-alienLime rounded-full border-2 border-borderNavy flex items-center justify-center text-xl shadow-[0_2px_0_#1e293b]">
+                    👾
+                </div>
+                <div>
+                    <h1 class="text-sm md:text-base font-extrabold text-borderNavy uppercase tracking-wide leading-none">
+                        LITTLE GREEN MEN HQ
+                    </h1>
+                    <span class="text-[10px] text-slate-500 font-bold">Pizza Planet Birthday Special</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-1 bg-softCream p-1.5 rounded-2xl border-2 border-borderNavy text-xs font-bold">
+                <button onclick="switchScreen(1)" id="tab-1" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">1. Message</button>
+                <button onclick="switchScreen(2)" id="tab-2" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">2. Calendar</button>
+                <button onclick="switchScreen(3)" id="tab-3" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">3. Wish & Cake</button>
+                <button onclick="switchScreen(4)" id="tab-4" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">4. Letter</button>
+                <button onclick="switchScreen(5)" id="tab-5" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">5. 10 Things</button>
+                <button onclick="switchScreen(6)" id="tab-6" class="px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy">6. Extras</button>
+            </nav>
+
+            <div class="flex items-center gap-2 bg-spaceNavy text-white px-3 py-1.5 rounded-2xl border-2 border-borderNavy shadow-sm text-xs">
+                <div id="vinyl-icon" class="w-6 h-6 rounded-full bg-alienLime border border-white flex items-center justify-center text-slate-900 text-[10px] font-black">
+                    ♪
+                </div>
+                <div class="hidden sm:block text-left">
+                    <div id="audio-title" class="font-bold text-amber-300 truncate max-w-[120px]">Alien Synth Melody</div>
+                </div>
+                <button id="toggle-audio-btn" class="bg-alienLime text-spaceNavy font-bold px-2 py-1 rounded-lg text-xs border border-borderNavy hover:bg-lime-300 transition">
+                    <i class="fa-solid fa-play" id="audio-icon"></i>
+                </button>
+                <label class="bg-pizzaBlue text-spaceNavy font-bold px-2 py-1 rounded-lg text-xs border border-borderNavy cursor-pointer hover:bg-sky-300 transition" title="Upload Lagu MP3">
+                    <i class="fa-solid fa-upload"></i>
+                    <input type="file" id="custom-mp3-input" accept="audio/*" class="hidden">
+                </label>
+            </div>
+        </div>
+
+        <div class="flex lg:hidden overflow-x-auto gap-2 pt-2 border-t border-slate-200 mt-2 text-xs font-bold no-scrollbar">
+            <button onclick="switchScreen(1)" id="mtab-1" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">1. Message</button>
+            <button onclick="switchScreen(2)" id="mtab-2" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">2. Calendar</button>
+            <button onclick="switchScreen(3)" id="mtab-3" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">3. Cake</button>
+            <button onclick="switchScreen(4)" id="mtab-4" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">4. Letter</button>
+            <button onclick="switchScreen(5)" id="mtab-5" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">5. 10 Things</button>
+            <button onclick="switchScreen(6)" id="mtab-6" class="px-3 py-1 rounded-lg border-2 border-borderNavy bg-white whitespace-nowrap">6. Extras</button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full flex flex-col justify-center">
+
+        <section id="screen-1" class="screen-card">
+            <div class="card-aesthetic pattern-checker p-8 md:p-12 text-center relative overflow-hidden">
+                
+                <!-- Floating Alien Mascot -->
+                <div class="w-28 h-28 mx-auto mb-6 bg-white border-4 border-borderNavy rounded-full flex items-center justify-center shadow-md animate-float relative">
+                    <svg class="w-20 h-20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="50" cy="56" rx="28" ry="30" fill="#98e95d" stroke="#1e293b" stroke-width="4"/>
+                        <ellipse cx="50" cy="47" rx="18" ry="15" fill="#b7f39b" opacity="0.55"/>
+                        <path d="M 48 29 L 48 20 L 52 20 L 52 29" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="50" cy="15" r="6" fill="#fef08a" stroke="#1e293b" stroke-width="3"/>
+                        <path d="M 16 56 L 8 44 L 14 42 L 22 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M 84 56 L 92 44 L 86 42 L 78 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                        <ellipse cx="36" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                        <ellipse cx="64" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                        <circle cx="36" cy="48" r="4" fill="#1e293b"/>
+                        <circle cx="64" cy="48" r="4" fill="#1e293b"/>
+                        <path d="M 39 62 Q 50 70 61 62" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+                        <circle cx="25" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                        <circle cx="75" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                    </svg>
+                    <div class="absolute -bottom-2 -right-2 bg-pizzaBlue text-white text-xs px-2 py-1 rounded-lg border-2 border-borderNavy shadow">
+                        ✉️
+                    </div>
+                </div>
+
+                <h2 class="text-xl md:text-3xl font-black text-borderNavy mb-3 uppercase tracking-wider font-fredoka">
+                    HALLO SAYANGKUU SELAMATT DATANGG
+                </h2>
+
+                <p class="text-slate-700 font-bold text-sm md:text-base max-w-md mx-auto mb-8">
+                    untuk pacarku tersayang, selamat membaca sayang
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xs mx-auto">
+                    <button onclick="acceptMessage()" class="btn-aesthetic w-full bg-alienLime hover:bg-lime-400 text-spaceNavy font-black py-3 px-6 rounded-2xl text-base uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check text-lg"></i> Accept!
+                    </button>
+                    <button id="decline-btn" onclick="declineMessage()" class="btn-aesthetic w-full bg-rose-200 hover:bg-rose-300 text-spaceNavy font-black py-3 px-6 rounded-2xl text-base uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-xmark text-lg"></i> Decline
+                    </button>
+                </div>
+
+                <div id="decline-warning" class="mt-4 text-xs font-bold text-rose-600 hidden">
+                    Ooooh no! Para Alien melarang kamu menolak surat ini! 👾 Klik tombol Accept ya!
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-2" class="screen-card hidden">
+            <div class="card-aesthetic pattern-stripes p-6 md:p-10 text-center relative">
+                
+                <h2 class="text-2xl md:text-4xl font-black text-borderNavy mb-2">
+                    Hari spesial buat kamu, sayang
+                </h2>
+                <p class="text-slate-600 font-bold text-sm mb-8">Aku mau kamu tahu, hari ini adalah hari yang paling spesial karena kamu ada di hidupku.</p>
+
+                <!-- Calendar Card Box with Corner Alien Decoration -->
+                <div class="max-w-sm mx-auto bg-white border-4 border-borderNavy rounded-3xl p-6 shadow-[0_8px_0_#1e293b] relative mt-8">
+                    
+                    <!-- Cute Alien Peeking at top border corner -->
+                    <div class="absolute -top-12 -left-4 z-20 flex items-center gap-1">
+                        <div class="bg-white border-2 border-borderNavy rounded-2xl px-3 py-1 shadow-sm text-xs font-black text-spaceNavy animate-bounce">
+                            Ooooooh! Special Day! 👾
+                        </div>
+                        <div class="w-16 h-16 relative transform -rotate-12">
+                            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="50" cy="56" rx="28" ry="30" fill="#98e95d" stroke="#1e293b" stroke-width="4"/>
+                                <ellipse cx="50" cy="47" rx="18" ry="15" fill="#b7f39b" opacity="0.55"/>
+                                <path d="M 48 29 L 48 20 L 52 20 L 52 29" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="50" cy="15" r="6" fill="#fef08a" stroke="#1e293b" stroke-width="3"/>
+                                <path d="M 16 56 L 8 44 L 14 42 L 22 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                                <path d="M 84 56 L 92 44 L 86 42 L 78 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                                <ellipse cx="36" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                                <ellipse cx="64" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                                <circle cx="36" cy="48" r="4" fill="#1e293b"/>
+                                <circle cx="64" cy="48" r="4" fill="#1e293b"/>
+                                <path d="M 39 62 Q 50 70 61 62" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+                                <circle cx="25" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                                <circle cx="75" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Additional Alien peeking right corner -->
+                    <div class="absolute -top-10 -right-4 z-20 w-14 h-14 transform rotate-12">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="50" cy="56" rx="28" ry="30" fill="#98e95d" stroke="#1e293b" stroke-width="4"/>
+                            <ellipse cx="50" cy="47" rx="18" ry="15" fill="#b7f39b" opacity="0.55"/>
+                            <path d="M 48 29 L 48 20 L 52 20 L 52 29" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="50" cy="15" r="6" fill="#fef08a" stroke="#1e293b" stroke-width="3"/>
+                            <path d="M 16 56 L 8 44 L 14 42 L 22 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M 84 56 L 92 44 L 86 42 L 78 52" fill="#98e95d" stroke="#1e293b" stroke-width="3" stroke-linejoin="round"/>
+                            <ellipse cx="36" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                            <ellipse cx="64" cy="48" rx="9" ry="11" fill="white" stroke="#1e293b" stroke-width="3"/>
+                            <circle cx="36" cy="48" r="4" fill="#1e293b"/>
+                            <circle cx="64" cy="48" r="4" fill="#1e293b"/>
+                            <path d="M 39 62 Q 50 70 61 62" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <circle cx="25" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                            <circle cx="75" cy="64" r="5" fill="#c084fc" stroke="#1e293b" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+
+                    <!-- Top Binder Rings -->
+                    <div class="flex justify-around absolute -top-4 left-12 right-12">
+                        <div class="w-4 h-7 bg-slate-300 border-2 border-borderNavy rounded-full"></div>
+                        <div class="w-4 h-7 bg-slate-300 border-2 border-borderNavy rounded-full"></div>
+                        <div class="w-4 h-7 bg-slate-300 border-2 border-borderNavy rounded-full"></div>
+                    </div>
+
+                    <!-- Month Header -->
+                    <div class="bg-alienLime border-2 border-borderNavy rounded-2xl py-3 px-4 mb-6 mt-2 flex items-center justify-between shadow-sm">
+                        <input type="text" id="cal-month-input" value="SEPTEMBER" class="bg-transparent font-black text-xl md:text-2xl text-borderNavy text-center w-full focus:outline-none uppercase tracking-wider">
+                    </div>
+
+                    <!-- Date 21 Highlight -->
+                    <div class="py-4 flex justify-center items-center">
+                        <div class="relative inline-block">
+                            <input type="text" id="cal-day1-input" value="21" class="w-36 text-center font-black text-6xl md:text-7xl text-pizzaBlue bg-sky-50 border-4 border-borderNavy rounded-3xl py-4 focus:outline-none shadow-[0_6px_0_#1e293b]">
+                            <div class="absolute -top-3 -right-3 bg-amber-300 text-spaceNavy font-black text-xs px-2.5 py-1 rounded-full border-2 border-borderNavy shadow animate-pulse">
+                                🎉 ULTAMU!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Note -->
+                    <div class="flex items-center justify-center gap-2 mt-4 pt-4 border-t-2 border-dashed border-slate-200 text-xs font-bold text-slate-600">
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <button onclick="switchScreen(3)" class="btn-aesthetic bg-alienLime hover:bg-lime-400 text-spaceNavy font-black px-8 py-3 rounded-2xl text-base uppercase tracking-wider inline-flex items-center gap-2">
+                        Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-3" class="screen-card hidden">
+            <div class="card-aesthetic pattern-dots p-6 md:p-10 text-center relative">
+                
+                <h2 class="text-2xl md:text-4xl font-black text-borderNavy mb-2">
+                    Buat harapan dulu ya, sayang 💫
+                </h2>
+                <p class="text-slate-600 font-bold text-sm mb-6">Berdoa dulu sayang sebelum matiin lilinnya</p>
+
+                <div class="cake-wrap">
+                    <div class="cake-stack">
+                        <div id="cake-candle" onclick="blowMainCandle()" class="cake-candle cursor-pointer group" aria-label="Tiup lilin">
+                            <div class="flame-wrap">
+                                <div id="main-flame" class="flame-anim"></div>
+                            </div>
+                            <div class="candle-stick"></div>
+                        </div>
+
+                        <div class="cake-tier cake-tier--top">
+                            <span class="cake-symbol">⭐</span>
+                            <span class="cake-symbol">👾</span>
+                            <span class="cake-symbol">⭐</span>
+                        </div>
+
+                        <div class="cake-tier cake-tier--middle">
+                            <span class="cake-symbol">🚀</span>
+                            <span class="cake-symbol">🍕</span>
+                            <span class="cake-symbol">🛸</span>
+                        </div>
+
+                        <div class="cake-tier cake-tier--bottom">
+                            <span class="cake-symbol">🎉</span>
+                            <span class="cake-symbol">🎂</span>
+                            <span class="cake-symbol">✨</span>
+                        </div>
+
+                        <div class="cake-plate"></div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-center gap-4 flex-wrap">
+                    <button onclick="blowMainCandle()" class="btn-aesthetic bg-amber-300 hover:bg-amber-400 text-spaceNavy font-black px-6 py-3 rounded-2xl text-sm uppercase flex items-center gap-2">
+                        <i class="fa-solid fa-wind"></i> Tiup lilin
+                    </button>
+                    <button onclick="switchScreen(4)" class="btn-aesthetic bg-pizzaBlue hover:bg-sky-300 text-spaceNavy font-black px-6 py-3 rounded-2xl text-sm uppercase flex items-center gap-2">
+                        Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-4" class="screen-card hidden">
+            <div class="card-aesthetic pattern-diamonds p-6 md:p-10 relative">
+                
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 border-b-3 border-borderNavy/20 pb-4">
+                    <div>
+                        <span class="bg-pizzaBlue text-white font-bold text-[10px] px-3 py-1 rounded-full border border-borderNavy uppercase">
+                            CELLA'S DESK NOTE 📜
+                        </span>
+                        <h2 class="text-2xl md:text-3xl font-black text-borderNavy mt-1">
+                            SURAT SPESIAL UNTUKMU ❤️
+                        </h2>
+                    </div>
+
+                    <!-- Avatar Photo Frame -->
+                    <div class="relative group shrink-0">
+                        <div class="w-20 h-20 bg-white border-3 border-borderNavy rounded-full overflow-hidden shadow-md">
+                            <img id="avatar-photo-preview" src="1.jpeg" alt="Avatar Pacar" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/200x200/a3e635/1e293b?text=Foto+Pacar';">
+                        </div>
+                        <label class="absolute -bottom-1 -right-1 bg-alienLime text-spaceNavy p-1.5 rounded-full border-2 border-borderNavy cursor-pointer text-xs shadow hover:bg-lime-300" title="Ubah Foto Avatar">
+                            <i class="fa-solid fa-camera"></i>
+                            <input type="file" id="avatar-photo-input" accept="image/*" class="hidden">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Letter Content with Suggested Sweet Indonesian Text -->
+                <div class="bg-white border-3 border-borderNavy rounded-2xl p-6 shadow-inner relative">
+                    <div class="mb-3">
+                        <span class="font-bold text-slate-700 text-sm uppercase tracking-wide">To : pacar aku tersayang</span>
+                    </div>
+
+                    <textarea id="letter-body-input" rows="9" class="w-full bg-amber-50/50 border-2 border-dashed border-amber-300 rounded-xl p-4 font-handwriting text-2xl md:text-3xl leading-relaxed text-slate-800 focus:outline-none focus:ring-2 focus:ring-alienLime">From : gadis imutmu
+Happy birthday sayangkuu 💕!!
+Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semoga doa aku dan rasa sayang aku ke kamu tersampaikan ya sayangg. Semoga di umur kamu yang sekarang bisa membawa kebahagiaan yang baru, dijauhkan dari hal - hal buruk, dan semua keinginan kamu tercapai di tahun ini atau berikutnya. Terimakasih ya sayang sudah slalu mewarnai hidupku dengan candaan kamu, keusilan kamu, dan juga aku bangga bangett sama kamu, karena kamu orangnya tu pekerja keras dan pantang nyerah banget (ini rill sii menurut aku hehe). Tetap jadi orang yang hangat bagi semua orang ya sayangg, aku beruntungg banget punya modelan kayak kamuu. I love you, my fav person.</textarea>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-600">
+                        <span class="text-xl">👾</span>
+                        <span>Dikirim oleh cewe Jember imut banget</span>
+                    </div>
+
+                    <button onclick="switchScreen(5)" class="btn-aesthetic bg-alienLime hover:bg-lime-400 text-spaceNavy font-black px-6 py-2.5 rounded-2xl text-sm uppercase flex items-center gap-2">
+                        10 Things I Love About You <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-5" class="screen-card hidden">
+            <div class="card-aesthetic bg-softCream p-6 md:p-10 relative">
+                
+                <div class="text-center mb-10">
+                    <div class="inline-block bg-pizzaBlue text-white border-2 border-borderNavy font-black text-xs px-4 py-1.5 rounded-full shadow-sm mb-2 uppercase tracking-wider">
+                        ⭐ SPECIAL REASONS ⭐
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-borderNavy tracking-tight">
+                        10 THINGS I LOVE ABOUT YOU
+                    </h2>
+                    <p class="text-slate-600 font-bold text-sm mt-1">10 Alasan kenapa aku pilih kamu sebagai pacar aku 🚀</p>
+                </div>
+
+                <!-- Numbered Vertical List Showcase -->
+                <div id="ten-things-list" class="space-y-6">
+                    <!-- Dynamic rendering from script -->
+                </div>
+
+                <div class="mt-10 text-center">
+                    <button onclick="switchScreen(6)" class="btn-aesthetic bg-pizzaBlue hover:bg-sky-300 text-spaceNavy font-black px-8 py-3.5 rounded-2xl text-base uppercase tracking-wider inline-flex items-center gap-2">
+                        Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-6" class="screen-card hidden">
+            <div class="card-aesthetic pattern-checker p-6 md:p-10 relative">
+                
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 border-b-3 border-borderNavy/20 pb-4">
+                    <div>
+                        <h2 class="text-2xl md:text-4xl font-black text-borderNavy mt-1">
+                            FOTO KAMU YANG PALING AKU SUKA
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Extra Photo Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-white p-3 rounded-2xl border-3 border-borderNavy shadow-[0_5px_0_#1e293b] transform -rotate-1">
+                        <div class="h-48 bg-sky-100 rounded-xl border-2 border-borderNavy overflow-hidden mb-2">
+                            <img id="gallery-img-1" src="1.jpeg" class="w-full h-full object-cover" alt="Foto pacar" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80';">
+                        </div>
+                        <p class="font-handwriting text-2xl text-center font-extrabold text-borderNavy">"Foto kamu yang bikin aku jatuh cinta."</p>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-2xl border-3 border-borderNavy shadow-[0_5px_0_#1e293b] transform rotate-2">
+                        <div class="h-48 bg-lime-100 rounded-xl border-2 border-borderNavy overflow-hidden mb-2">
+                            <img id="gallery-img-2" src="2.jpeg" class="w-full h-full object-cover" alt="Foto kenangan" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80';">
+                        </div>
+                        <p class="font-handwriting text-2xl text-center font-extrabold text-borderNavy">"Aku juga sukaa yang ini, karena senyum kamu indah banget sayangg" </p>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-2xl border-3 border-borderNavy shadow-[0_5px_0_#1e293b] transform -rotate-2">
+                        <div class="h-48 bg-amber-100 rounded-xl border-2 border-borderNavy overflow-hidden mb-2">
+                            <img id="gallery-img-3" src="3.jpeg" class="w-full h-full object-cover" alt="Foto kenangan" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=900&q=80';">
+                        </div>
+                        <p class="font-handwriting text-2xl text-center font-extrabold text-borderNavy">"Wesss josjiss tenan gantengkuu iki rek" </p>
+                    </div>
+                </div>
+
+                <!-- Claw Machine Surprise Container -->
+                <div class="bg-spaceNavy text-white rounded-3xl p-6 border-4 border-borderNavy shadow-lg text-center relative overflow-hidden">
+                    <span class="bg-amber-300 text-spaceNavy font-black text-xs px-3 py-1 rounded-full border border-borderNavy uppercase inline-block mb-2">
+                        Hadiah yang bisa kamu dapat
+                    </span>
+                    <h3 class="text-2xl font-black text-alienLime mb-2">CLICK THE ALIEN TO WIN A SURPRISE!</h3>
+                    <p class="text-xs text-slate-300 mb-6">Klik Alien di bawah ya sayangg!</p>
+
+                    <div class="flex justify-center items-center gap-8 py-4">
+                        <button onclick="triggerSurpriseCoupon(1)" class="text-6xl hover:scale-125 transition transform animate-bounce">👾</button>
+                        <button onclick="triggerSurpriseCoupon(2)" class="text-6xl hover:scale-125 transition transform animate-bounce" style="animation-delay: 0.15s;">👾</button>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="switchScreen(1)" class="btn-aesthetic bg-amber-300 hover:bg-amber-400 text-spaceNavy font-black px-6 py-2.5 rounded-2xl text-xs uppercase inline-flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-left"></i> Kembali Ke Awal
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="voucher-modal" class="fixed inset-0 bg-spaceNavy/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-softCream border-4 border-borderNavy rounded-3xl p-6 max-w-sm w-full text-center shadow-[0_12px_0_#1e293b] transform transition">
+            <div id="voucher-emoji" class="text-6xl mb-3">🎁</div>
+            <h3 id="voucher-title" class="text-2xl font-black text-borderNavy mb-2 uppercase">KUPON ULANG TAHUN!</h3>
+            <p id="voucher-desc" class="text-slate-700 font-bold text-sm mb-6">Kamu memenangkan kupon spesial dari Alien!</p>
+            <button onclick="closeVoucherModal()" class="btn-aesthetic bg-alienLime text-spaceNavy font-black px-6 py-3 rounded-2xl text-sm w-full uppercase">
+                Ooooooh! Terima Kasih! 
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 1;
+        let isAudioInit = false;
+        let isAudioPlaying = false;
+        let synth;
+        const bgAudio = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b5f0f1d23.mp3?filename=all-of-me-129126.mp3');
+
+        bgAudio.loop = true;
+        bgAudio.volume = 0.6;
+
+        // 10 Things yang lebih personal dan cocok untuk hubungan jarak jauh
+        const tenThingsData = [
+            { id: 1, title: "Senyum Kamu", desc: "Senyum kamu itu selalu berhasil bikin aku merasa seneng, tenang.", color: "bg-sky-100" },
+            { id: 2, title: "Mata Kamu", desc: "Matan kamu yang tulus dan lembut bikin aku merasa dihargai dan selalu merasa dicintai.", color: "bg-lime-100" },
+            { id: 3, title: "Cara Kamu Peduli", desc: "Kamu selalu perhatian ke hal kecil, dan itu bikin aku merasa benar-benar dicintai dengan cara yang nyata.", color: "bg-amber-100" },
+            { id: 4, title: "Humormu", desc: "Lelucon dan kelakuanmu itu lohh slalu bikin aku bahagia, apalagi saat hari sedang berat.", color: "bg-rose-100" },
+            { id: 5, title: "Kesabaran Kamu", desc: "Kamu slalu sabar banget sama sifat aku yang bisa dibilang jelek, dan itu salah satu hal yang paling aku hargai dari kamu.", color: "bg-purple-100" },
+            { id: 6, title: "Suara Kamu", desc: "Suara kamu itu kayak tempat paling nyaman buat aku cerita apapun, baik seneng ataupun sedih.", color: "bg-sky-100" },
+            { id: 7, title: "Semangat Kamu", desc: "Aku suka cara kamu berjuang demi hal yang kamu suka, karena itu bikin aku makin respect sama kamu.", color: "bg-lime-100" },
+            { id: 8, title: "Hati Kamu", desc: "Kebaikan dan ketulusan hati kamu itu bukan cuma buat aku, tapi juga buat orang-orang di sekitar kamu.", color: "bg-amber-100" },
+            { id: 9, title: "Dukungan Kamu", desc: "Kamu selalu percaya dan slalu dukung aku, bahkan ketika aku sendiri belum yakin dengan diri aku.", color: "bg-rose-100" },
+            { id: 10, title: "Kamu itu Kamu", desc: "Yang paling aku cintai itu kamu yang sederhana, tulus, dan selalu jadi alasan aku merasa betah bertahan sejauh ini.", color: "bg-purple-100" }
+        ];
+
+        const coupons = [
+            { title: "KUPON BELI MAKANAN", desc: "Kupon dibelikan makanan/snack favoritmu hari ini!" },
+            { title: "KUPON MAIN", desc: "Bebas main seharian tanpa diganggu!" }
+        ];
+
+        function initSynth() {
+            if (!isAudioInit) {
+                synth = new Tone.PolySynth(Tone.Synth).toDestination();
+                Tone.start();
+                isAudioInit = true;
+            }
+        }
+
+        function playSynthBeep(note = "E5") {
+            initSynth();
+            try { synth.triggerAttackRelease(note, "8n"); } catch(e){}
+        }
+
+        function playFanfare() {
+            initSynth();
+            const now = Tone.now();
+            const notes = ["C4", "E4", "G4", "C5"];
+            notes.forEach((n, idx) => {
+                synth.triggerAttackRelease(n, "8n", now + (idx * 0.15));
+            });
+        }
+
+        function switchScreen(screenNum) {
+            document.querySelectorAll('.screen-card').forEach(s => s.classList.add('hidden'));
+            const targetScreen = document.getElementById(`screen-${screenNum}`);
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden');
+                currentScreen = screenNum;
+                updateTabStyles();
+                playSynthBeep("G4");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateTabStyles() {
+            for (let i = 1; i <= 6; i++) {
+                const tab = document.getElementById(`tab-${i}`);
+                const mtab = document.getElementById(`mtab-${i}`);
+                if (i === currentScreen) {
+                    if(tab) tab.className = "px-3 py-1.5 rounded-xl border-2 border-borderNavy bg-alienLime text-spaceNavy font-black shadow-sm";
+                    if(mtab) mtab.className = "px-3 py-1 rounded-lg border-2 border-borderNavy bg-alienLime text-spaceNavy font-black whitespace-nowrap shadow-sm";
+                } else {
+                    if(tab) tab.className = "px-3 py-1.5 rounded-xl border-2 border-transparent transition text-spaceNavy hover:bg-slate-200/50";
+                    if(mtab) mtab.className = "px-3 py-1 rounded-lg border-2 border-borderNavy bg-white text-spaceNavy whitespace-nowrap";
+                }
+            }
+        }
+
+        function acceptMessage() {
+            confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+            playFanfare();
+            switchScreen(2);
+        }
+
+        function declineMessage() {
+            const btn = document.getElementById('decline-btn');
+            btn.classList.add('animate-shake');
+            document.getElementById('decline-warning').classList.remove('hidden');
+            playSynthBeep("C3");
+            setTimeout(() => btn.classList.remove('animate-shake'), 400);
+        }
+
+        function blowMainCandle() {
+            const flame = document.getElementById('main-flame');
+            if (flame && !flame.classList.contains('hidden')) {
+                flame.classList.add('hidden');
+                playFanfare();
+                confetti({ particleCount: 120, spread: 90, origin: { y: 0.5 }, colors: ['#a3e635', '#38bdf8', '#facc15', '#a855f7'] });
+            } else if (flame) {
+                flame.classList.remove('hidden');
+            }
+        }
+
+        function renderTenThings() {
+            const container = document.getElementById('ten-things-list');
+            container.innerHTML = '';
+
+            tenThingsData.forEach((item) => {
+                const numStr = item.id < 10 ? `0${item.id}` : `${item.id}`;
+                const card = document.createElement('div');
+                card.className = `${item.color} border-3 border-borderNavy rounded-2xl p-4 md:p-5 shadow-[0_5px_0_#1e293b]`;
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-4 w-full">
+                        <span class="font-black text-2xl md:text-3xl text-pizzaBlue bg-white border-2 border-borderNavy px-3 py-0.5 rounded-xl shadow-sm shrink-0">
+                            ${numStr}
+                        </span>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-black text-xl md:text-2xl text-borderNavy mb-2">${item.title}</h3>
+                            <p class="text-sm md:text-base font-bold text-slate-700 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function uploadItemPhoto(event, id) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById(`thing-img-${id}`).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                confetti({ particleCount: 30, spread: 40 });
+            }
+        }
+
+        function triggerSurpriseCoupon(index) {
+            const coupon = coupons[(index - 1) % coupons.length];
+            document.getElementById('voucher-emoji').innerText = coupon.emoji;
+            document.getElementById('voucher-title').innerText = coupon.title;
+            document.getElementById('voucher-desc').innerText = coupon.desc;
+            document.getElementById('voucher-modal').classList.remove('hidden');
+            playFanfare();
+            confetti({ particleCount: 80, spread: 70 });
+        }
+
+        function closeVoucherModal() {
+            document.getElementById('voucher-modal').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTenThings();
+            updateTabStyles();
+
+            const audioTitle = document.getElementById('audio-title');
+            if (audioTitle) {
+                audioTitle.innerText = 'All of Me';
+            }
+
+            const playMusic = () => {
+                bgAudio.play().catch(() => {});
+                isAudioPlaying = true;
+                const icon = document.getElementById('audio-icon');
+                if (icon) icon.className = 'fa-solid fa-pause';
+            };
+
+            playMusic();
+
+            document.getElementById('toggle-audio-btn').addEventListener('click', () => {
+                if (bgAudio.src) {
+                    if (isAudioPlaying) {
+                        bgAudio.pause();
+                        isAudioPlaying = false;
+                        document.getElementById('audio-icon').className = "fa-solid fa-play";
+                    } else {
+                        bgAudio.play().catch(() => {});
+                        isAudioPlaying = true;
+                        document.getElementById('audio-icon').className = "fa-solid fa-pause";
+                    }
+                } else {
+                    playFanfare();
+                }
+            });
+
+            document.getElementById('custom-mp3-input').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    bgAudio.src = URL.createObjectURL(file);
+                    document.getElementById('audio-title').innerText = file.name;
+                    bgAudio.play();
+                    isAudioPlaying = true;
+                    document.getElementById('audio-icon').className = "fa-solid fa-pause";
+                }
+            });
+
+            document.getElementById('avatar-photo-input').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        document.getElementById('avatar-photo-preview').src = evt.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById('bulk-photo-input').addEventListener('change', (e) => {
+                const files = e.target.files;
+                if (!files || files.length === 0) return;
+                const targets = ['gallery-img-1', 'gallery-img-2', 'gallery-img-3'];
+                Array.from(files).forEach((file, i) => {
+                    if (i < targets.length) {
+                        const reader = new FileReader();
+                        reader.onload = (evt) => {
+                            document.getElementById(targets[i]).src = evt.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                confetti({ particleCount: 50, spread: 60 });
+            });
+        });
+    </script>
+</body>
+</html>
