@@ -781,7 +781,6 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
                     <div class="flex justify-center items-center gap-6 py-4">
                         <button onclick="triggerSurpriseCoupon(1)" class="text-5xl hover:scale-125 transition transform animate-bounce">👾</button>
                         <button onclick="triggerSurpriseCoupon(2)" class="text-6xl hover:scale-125 transition transform animate-bounce" style="animation-delay: 0.15s;">👾</button>
-                        <button onclick="triggerSurpriseCoupon(3)" class="text-5xl hover:scale-125 transition transform animate-bounce" style="animation-delay: 0.3s;">👾</button>
                     </div>
                 </div>
 
@@ -832,9 +831,8 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
         ];
 
         const coupons = [
-            { title: "KUPON BUKA BARU", desc: "Kupon bisa request kegiatan spesial bareng hari ini!", emoji: "✨" },
             { title: "KUPON BELI MAKANAN", desc: "Kupon dibelikan makanan/snack favoritmu hari ini!", emoji: "🍔" },
-            { title: "KUPON BEBAS MAIN", desc: "Bebas main seharian tanpa diganggu!", emoji: "🎮" }
+            { title: "KUPON MAIN", desc: "Bebas main seharian tanpa diganggu!", emoji: "🎮" }
         ];
 
         function initSynth() {
@@ -886,6 +884,10 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
         }
 
         function acceptMessage() {
+            bgAudio.play().catch(() => {});
+            isAudioPlaying = true;
+            const icon = document.getElementById('audio-icon');
+            if (icon) icon.className = 'fa-solid fa-pause';
             confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
             playFanfare();
             switchScreen(2);
@@ -975,8 +977,6 @@ Walau hari ini aku belum bisa ngerayain ulang tahun secara langsungg tapii semog
                 const icon = document.getElementById('audio-icon');
                 if (icon) icon.className = 'fa-solid fa-pause';
             };
-
-            playMusic();
 
             document.getElementById('toggle-audio-btn').addEventListener('click', () => {
                 if (bgAudio.src) {
